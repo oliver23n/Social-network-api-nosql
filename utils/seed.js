@@ -25,6 +25,7 @@ connection.once('open', async () => {
         // Find and update the user whose _id or username was just inserted as the creator of the thought
         randomUser.thoughts.push(thought._id);
 
+
         
     }
     await User.collection.insertMany(users);

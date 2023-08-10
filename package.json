@@ -2,7 +2,8 @@
  
   "scripts": {
     "start": "node server.js",
-    "seed" : "node utils/seed"
+    "seed" : "node utils/seed",
+    "watch": "nodemon server.js"
   },
   "name": "social-network-api-nosql",
   "version": "1.0.0",
