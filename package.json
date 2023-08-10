@@ -1,8 +1,5 @@
 {
-  "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.4.2"
-  },
+ 
   "scripts": {
     "start": "node server.js",
     "seed" : "node utils/seed"
@@ -10,6 +7,10 @@
   "name": "social-network-api-nosql",
   "version": "1.0.0",
   "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.4.2"
+  },
   "devDependencies": {},
   "author": "",
   "license": "ISC",
