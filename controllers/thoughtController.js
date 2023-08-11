@@ -22,6 +22,21 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    async createThought(req,res){
+        try{
+            if(!req.body.thoughtText || !req.body.userId ||!req.body.username){
+                return res.json({message: "must contain text and userId"});
+            }
+            const newThought = await Thought.create(req.body);
+            await newThought.save();
+            const updateUser = await User.findOneAndUpdate({ _id: req.body.userId },
+                { $addToSet: { thoughts: newThought._id } },
+                { new: true });
+            res.status(200).json(newThought);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
     async updateThought(req,res){
         try{
             const updated = await Thought.findOne({_id: req.params.thoughtId});
