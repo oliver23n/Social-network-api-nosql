@@ -57,5 +57,32 @@ module.exports = {
         }catch(err){    
             res.status(500).json(err);
         }
+    },
+    async addReaction(req,res){
+        try{
+            if (!req.body.reactionBody || !req.body.username ){
+                return res.status(400).json({message: "must have reaction body and username"});
+            }
+            const reaction ={
+                reactionBody: req.body.reactionBody,
+                username: req.body.username
+            };
+            const thought = await Thought.findByIdAndUpdate({_id: req.params.thoughtId},
+                {$addToSet: {reactions: reaction }},
+                {new: true});
+            res.status(200).json(thought);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
+    async deleteReaction(req,res){
+        try{
+            const thought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId },
+                { $pull: { reactions: {reactionId: req.body.reactionId} } },
+                { new: true })
+            res.status(200).json({message:"reaction removed!"})
+        }catch(err){
+            res.status(500).json(err);
+        }
     }
 }
