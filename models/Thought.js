@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 const Reaction = require('./Reaction')
 
-const months = ['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
-
-const getMonthName = (m) => months[m];
-
 const thoughtSchema = new mongoose.Schema({
 
     thoughtText: {
