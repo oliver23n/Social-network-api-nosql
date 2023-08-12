@@ -55,6 +55,9 @@ module.exports = {
             if (!deleted) {
                 return res.status(404).json({ message: 'No user with that ID' });
             }
+            //remove associated thoughts
+            const deleteThoughts = await Thought.deleteMany({userId: req.params.userId});
+            
             res.status(200).json({message: "USER DELETED"}); 
         }catch (err){
             console.log(err);

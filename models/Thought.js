@@ -14,10 +14,10 @@ const thoughtSchema = new mongoose.Schema({
         required: true,
 
     },
-    // userId:{
-    //     type: mongoose.SchemaTypes.ObjectId,
-    //     ref: "User"
-    // },
+    userId:{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "User"
+    },
     reactions: [Reaction],
     timestamp: {
         type: Date,
