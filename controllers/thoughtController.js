@@ -3,16 +3,19 @@ const { User, Thought } = require('../models');
 module.exports = {
     async getThoughts(req,res) {
         try{
-            const thoughts = await Thought.find();
+            const thoughts = await Thought.find()
+            .select('-__v');
+          
             res.status(200).json(thoughts);
         }catch (err){
             res.status(500).json(err);
+            console.log(err);
         }
     },
     async getSingle(req,res){
         try{    
             const singleThought = await Thought.findOne({_id: req.params.thoughtId})
-            .select('-__v');
+                .select('-__v');
             if(!singleThought){
                 return res.status(404).json({message: "Thought not found!"})
             }
