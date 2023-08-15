@@ -40,7 +40,7 @@ To start just run
 npm start
 ```
 
-Video link on how the routes work in Thunder-Client : 
+Video link on how the routes work in Thunder-Client : [click here](https://drive.google.com/file/d/18KDY9R0FD13ZT1YkUuylpHtrDYYKzHjg/view)
 
 ---
 
