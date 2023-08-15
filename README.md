@@ -54,6 +54,5 @@ This Project is licenced under MIT license.
 ## Questions
 
 You can find more about my work at my Github [oliver23n](https://github.com/oliver23n).
-If you have any questions you can reach me at [](mailto:).
 
 

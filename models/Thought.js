@@ -19,23 +19,26 @@ const thoughtSchema = new mongoose.Schema({
         ref: "User"
     },
     reactions: [Reaction],
-    timestamp: {
+    createdAt: {
         type: Date,
-        default: () => Date.now()
-    
+        default: () => Date.now(),
+        get: (createdAt)=>{
+            return `${createdAt.toDateString()} at ${createdAt.toLocaleTimeString()}`
+        }
     },
 },
     {
         toJSON: {
             virtuals: true,
+            getters:true
         },
         id: false,
     }
 );
 
-thoughtSchema.virtual('createdAt').get(function (){
-    return `${this.timestamp.toDateString()} at ${this.timestamp.toLocaleTimeString()}`;
-});
+// thoughtSchema.virtual('createdAt').get(function (){
+//     return `${this.timestamp.toDateString()} at ${this.timestamp.toLocaleTimeString()}`;
+// });
 
 thoughtSchema.virtual('reactionCount').get(function (){
     return this.reactions.length
